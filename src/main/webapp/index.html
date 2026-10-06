@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Tarea HttpSession</title>
+</head>
+<body>
+
+	<form action="Servlet1" method="post" onsubmit="return validarFormulario()">
+		Name:<input type="text" name="userName" id="userName"/><br /> <input type="submit"
+			value="go" />
+	</form>
+	<p id="mensajeError" style="color: red;"></p>
+	
+	<script>
+        /*function validarFormulario() {
+            var inputNombre = document.getElementById("userName").value;
+            var mensajeError = document.getElementById("mensajeError");
+
+            if (inputNombre.trim() === "") {
+                mensajeError.innerText = "Error: El campo no puede estar vacío.";
+                return false; // Cancela envío del formulario (evita redirección)
+            }
+
+            return true; // Permite envío del form
+        }*/
+        function validarFormulario() {
+       		const regexText = /^[a-záéíóú\s]{2,50}$/i;
+        	const name = document.getElementById("userName").value.trim();
+        	var mensajeError = document.getElementById("mensajeError");
+        	
+        	if(!name){
+        		mensajeError.innerText = "Error: El campo no puede estar vacío.";
+        		return false;
+       		 }
+        	if (!regexText.test(name)) {
+        		mensajeError.innerText = "Error: El nombre debe contener entre 2 y 50 caracteres. No se permiten caracteres especiales o números.";
+        		return false;
+        	}
+        	return true;
+        }
+    </script>
+    
+</body>
+</html>
